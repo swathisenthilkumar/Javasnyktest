@@ -16,5 +16,6 @@ jobs:
         echo "----------Authenticating Snyk-----------"
         ./snyk auth ${{secrets.Snyk_token}}
         echo "----------Snyk Scanning-----------"
+         ./snyk test --all-projects -d
         echo "----------Snyk Monitor-----------"
         ./snyk monitor --all-projects 
