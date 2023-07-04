@@ -1,0 +1,21 @@
+name: Snyk_Code_Scan
+on: [push]
+jobs:
+  Snyk_Code_Scan:
+    #needs: Code_checkout
+    runs-on: ubuntu-latest   
+    steps:
+    - uses: actions/checkout@v1
+    - name: Snyk SCA Scanning
+      continue-on-error: true
+      run: |
+        echo "----------Download Latest Snyk CLI-----------"
+        curl -Lo ./snyk "https://github.com/snyk/snyk/releases/download/v1.1060.0/snyk-linux"
+        chmod +x snyk
+        ls -lrt
+        echo "----------Authenticating Snyk-----------"
+        ./snyk auth ${{secrets.Snyk_token}}
+        echo "----------Snyk Scanning-----------"
+         ./snyk test --all-projects -d
+        echo "----------Snyk Monitor-----------"
+        ./snyk monitor --all-projects 
