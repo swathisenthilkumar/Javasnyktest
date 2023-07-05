@@ -10,8 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Set up environment variables
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       - name: Run bash script
         run: |
              echo "running script"
              chmod +x script.sh
-             ./script.sh
+             ./script.sh $SNYK_TOKEN
