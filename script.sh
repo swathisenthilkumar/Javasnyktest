@@ -7,4 +7,5 @@ curl -Lo ./snyk "https://github.com/snyk/snyk/releases/download/v1.1060.0/snyk-l
          ./snyk auth ${{secrets.Snyk_token}}
         echo "----------Snyk Scanning-----------"
          ./snyk test --all-projects -d
+         
         
