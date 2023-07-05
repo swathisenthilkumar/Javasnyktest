@@ -4,4 +4,7 @@ curl -Lo ./snyk "https://github.com/snyk/snyk/releases/download/v1.1060.0/snyk-l
         chmod +x snyk
         ls -lrt
         echo "----------Authenticating Snyk-----------"
+         ./snyk auth ${{secrets.Snyk_token}}
+        echo "----------Snyk Scanning-----------"
+         ./snyk test --all-projects -d
         
