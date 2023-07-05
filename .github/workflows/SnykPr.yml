@@ -1,4 +1,4 @@
-name: PRforsnykwithbash
+name: SnykPR
 on:
   pull_request:
     types:
